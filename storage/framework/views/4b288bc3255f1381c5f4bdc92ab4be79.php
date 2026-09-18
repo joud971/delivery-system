@@ -1,0 +1,23 @@
+<?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
+<?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('app-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php $__env->startSection('page_title','المناطق'); ?>
+<div class="mx-auto max-w-6xl space-y-5"><div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><div><div class="text-sm text-orange-500">التسعير</div><h1 class="text-2xl font-black">المناطق وأسعار التوصيل</h1><p class="mt-1 text-sm text-slate-500">أضف المناطق وحدد أجرة التوصيل لكل منطقة.</p></div><form method="POST" action="<?php echo e(route('districts.store')); ?>" class="mt-6 grid gap-3 md:grid-cols-4"><?php echo csrf_field(); ?><input name="name" required placeholder="اسم المنطقة" class="rounded-xl border-slate-200"><input name="city" placeholder="المدينة" class="rounded-xl border-slate-200"><input name="delivery_fee" type="number" min="0" required placeholder="سعر التوصيل" class="rounded-xl border-slate-200"><button class="rounded-xl bg-orange-500 px-4 py-2.5 font-bold text-white">＋ إضافة منطقة</button></form></div>
+<div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><table class="min-w-full text-right text-sm"><thead><tr class="border-b text-slate-400"><th class="pb-3">المنطقة</th><th class="pb-3">المدينة</th><th class="pb-3">السعر</th><th class="pb-3">الطلبات</th><th class="pb-3">الحالة</th><th class="pb-3">إجراء</th></tr></thead><tbody><?php $__empty_1 = true; $__currentLoopData = $districts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $district): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?><tr class="border-b"><td class="py-4 font-bold"><?php echo e($district->name); ?></td><td class="py-4"><?php echo e($district->city ?: '—'); ?></td><td class="py-4"><?php echo e(number_format($district->delivery_fee,0)); ?> ل.س</td><td class="py-4"><?php echo e($district->orders_count); ?></td><td class="py-4"><?php echo e($district->status==='active' ? 'مفعّلة' : 'متوقفة'); ?></td><td class="py-4"><form method="POST" action="<?php echo e(route('districts.update',$district)); ?>" class="flex items-center gap-2"><?php echo csrf_field(); ?> <?php echo method_field('PATCH'); ?><input type="hidden" name="name" value="<?php echo e($district->name); ?>"><input type="hidden" name="city" value="<?php echo e($district->city); ?>"><input type="hidden" name="delivery_fee" value="<?php echo e($district->delivery_fee); ?>"><select name="status" onchange="this.form.submit()" class="rounded-lg border-slate-200 text-xs"><option value="active" <?php if($district->status==='active'): echo 'selected'; endif; ?>>مفعلة</option><option value="inactive" <?php if($district->status==='inactive'): echo 'selected'; endif; ?>>متوقفة</option></select></form></td></tr><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?><tr><td colspan="6" class="py-14 text-center text-slate-400">لا توجد مناطق.</td></tr><?php endif; ?></tbody></table><div class="mt-5"><?php echo e($districts->links()); ?></div></div></div> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
+<?php $attributes = $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
+<?php unset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
+<?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
+<?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
+<?php endif; ?>
+<?php /**PATH C:\Users\HP\Downloads\al-khawaja-final-v2-full\al-khawaja-delivery-full\resources\views/districts/index.blade.php ENDPATH**/ ?>

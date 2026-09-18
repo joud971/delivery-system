@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html{direction:rtl} body{font-family:'Cairo',sans-serif;background:#f1f5f9;color:#0f172a} [x-cloak]{display:none!important}
+input,select,textarea{outline:none} input:focus,select:focus,textarea:focus{border-color:#f97316!important;box-shadow:0 0 0 3px rgba(249,115,22,.12)}
+.pagination svg{transform:scaleX(-1)}
+
+@layer components{.dashboard-shell{min-height:100%;}.panel{@apply rounded-3xl border border-slate-200 bg-white shadow-sm;}.page-card{@apply rounded-3xl border border-slate-200 bg-white shadow-sm;}.action-primary{@apply rounded-2xl bg-orange-500 px-5 py-3 text-sm font-black text-white shadow-lg shadow-orange-500/20;}.action-dark{@apply rounded-2xl bg-slate-950 px-5 py-3 text-sm font-black text-white;}}
